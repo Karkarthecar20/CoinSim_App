@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h2 class="mb-4">Run a Coin Flip Simulation</h2>
+
+  <form method="POST" class="row g-3 mb-4">
+    <div class="col-md-4">
+      <label for="num_flips" class="form-label">
+        Number of flips (1–20)
+      </label>
+      <input
+        type="number"
+        class="form-control"
+        id="num_flips"
+        name="num_flips"
+        min="1"
+        max="20"
+        required
+      >
+    </div>
+
+    <div class="col-12">
+      <button type="submit" class="btn btn-primary">
+        Run Simulation
+      </button>
+    </div>
+  </form>
+
+  {% if error %}
+    <div class="alert alert-danger">
+      {{ error }}
+    </div>
+  {% endif %}
+
+  {% if results %}
+    <hr>
+    <h4>Simulation Results</h4>
+    <p>Total flips: <strong>{{ results.num_flips }}</strong></p>
+    <p>
+      Heads: <strong>{{ results.heads }}</strong> |
+      Tails: <strong>{{ results.tails }}</strong>
+    </p>
+
+    <h5>Sequence</h5>
+    <p>
+      {% for flip in results.flips %}
+        {{ flip }}{% if not loop.last %}, {% endif %}
+      {% endfor %}
+    </p>
+  {% endif %}
+{% endblock %}

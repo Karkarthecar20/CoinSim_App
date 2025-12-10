@@ -1,0 +1,42 @@
+[
+    {
+        "timestamp": "2025-12-10T12:35:51",
+        "num_flips": 12,
+        "flips": [
+            "Tails",
+            "Heads",
+            "Tails",
+            "Tails",
+            "Heads",
+            "Heads",
+            "Tails",
+            "Heads",
+            "Heads",
+            "Tails",
+            "Heads",
+            "Tails"
+        ],
+        "heads": 6,
+        "tails": 6
+    },
+    {
+        "timestamp": "2025-12-10T12:35:58",
+        "num_flips": 12,
+        "flips": [
+            "Heads",
+            "Tails",
+            "Heads",
+            "Tails",
+            "Heads",
+            "Heads",
+            "Tails",
+            "Heads",
+            "Heads",
+            "Tails",
+            "Heads",
+            "Tails"
+        ],
+        "heads": 7,
+        "tails": 5
+    }
+]
