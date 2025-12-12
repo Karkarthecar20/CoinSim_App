@@ -51,6 +51,7 @@ def index():
 
 @app.route("/coin", methods=["GET", "POST"])
 def coin():
+    """Coin flip simulator page."""
     error = None
     results = None
 
@@ -93,6 +94,15 @@ def coin():
         save_runs(runs)
 
     return render_template("page1.html", error=error, results=results)
+
+
+@app.route("/history")
+def history():
+    """Show a table of all past coin flip simulations."""
+    runs = load_runs()
+    # Show most recent first
+    runs_sorted = sorted(runs, key=lambda r: r.get("timestamp", ""), reverse=True)
+    return render_template("page2.html", runs=runs_sorted)
 
 
 if __name__ == "__main__":

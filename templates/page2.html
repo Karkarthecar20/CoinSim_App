@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h2 class="mb-4">Simulation History</h2>
+
+  {% if runs %}
+    <div class="table-responsive">
+      <table class="table table-striped align-middle">
+        <thead>
+          <tr>
+            <th scope="col">Time</th>
+            <th scope="col">Number of Flips</th>
+            <th scope="col">Heads</th>
+            <th scope="col">Tails</th>
+            <th scope="col">Sequence</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for run in runs %}
+            <tr>
+              <td>{{ run.timestamp if run.timestamp is defined else run["timestamp"] }}</td>
+              <td>{{ run.num_flips if run.num_flips is defined else run["num_flips"] }}</td>
+              <td>{{ run.heads if run.heads is defined else run["heads"] }}</td>
+              <td>{{ run.tails if run.tails is defined else run["tails"] }}</td>
+              <td>
+                {% set flips = run.flips if run.flips is defined else run["flips"] %}
+                {% for flip in flips %}
+                  {{ flip }}{% if not loop.last %}, {% endif %}
+                {% endfor %}
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  {% else %}
+    <p>No simulations have been run yet. Try the
+      <a href="{{ url_for('coin') }}">Coin Flip</a> page.</p>
+  {% endif %}
+{% endblock %}
